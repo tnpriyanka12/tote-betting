@@ -1,19 +1,10 @@
-//All three pools
+//The three pools are divided here
+//Individual pools' yeilds are calculated separately
+
+
 const Tab = require('../tabcalc/tab.js');
 
 module.exports = {
-
-  calcRanks: function(){
-    let firstRank  = Tab.tabCalculator.raceResults.split(':')[1];
-    let secondRank = Tab.tabCalculator.raceResults.split(':')[2];
-    let thirdRank  = Tab.tabCalculator.raceResults.split(':')[3];
-    return({
-      firstRank,
-      secondRank,
-      thirdRank
-    })
-  },
-
 
   //The total win yeild is calculates as
   // ($ total wagered money ) x (1 – commission%) / amount wagered on selected runner
@@ -22,7 +13,7 @@ module.exports = {
     let poolAmount  = 0;
     let totalWinStake = 0;
     let yeild = 0;
-    let ranks = this.calcRanks();
+    let ranks = Tab.tabCalculator.calcRanks();
 
 
     for(let i=0; i<winInputArray.length; i++){
@@ -32,7 +23,7 @@ module.exports = {
 
       poolAmount += winStake;
       //Calculate total winning stake for the winner
-      if(winSelection == ranks.firstRank){
+      if(winSelection == ranks.first){
         totalWinStake += winStake;
       }
     }
@@ -47,7 +38,7 @@ module.exports = {
     let firstStake = 0, secondStake = 0, thirdStake = 0;
     let firstYeild = 0, secondYeild = 0, thirdYeild = 0;
     let yeild = 0;
-    let ranks = this.calcRanks();
+    let ranks = Tab.tabCalculator.calcRanks();
 
 
     for(let i=0; i<placeInputArray.length; i++){
@@ -57,13 +48,13 @@ module.exports = {
       poolAmount += placeStake;
       //Calculate total winning stake for the winner
       switch(placeSelection) {
-        case (ranks.firstRank):
+        case (ranks.first):
           firstStake += placeStake;
           break;
-        case (ranks.secondRank):
+        case (ranks.second):
           secondStake += placeStake;
           break;
-        case (ranks.thirdRank):
+        case (ranks.third):
           thirdStake += placeStake;
           break;
         default:
@@ -93,13 +84,13 @@ module.exports = {
     let poolAmount  = 0;
     let totalExactaStake = 0;
     let yeild = 0;
-    let ranks = this.calcRanks();
+    let ranks = Tab.tabCalculator.calcRanks();
 
     for(let i=0; i<exactaInputArray.length; i++){
       let currObj         = exactaInputArray[i].split(':');
       let exactaSelection = currObj[2];
       let exactaStake     = parseFloat(currObj[3]);
-      let exactaRank      = ranks.firstRank + ',' + ranks.secondRank;
+      let exactaRank      = ranks.first + ',' + ranks.second;
       poolAmount += exactaStake;
       //Calculate total winning stake for the winner
       if(exactaSelection == exactaRank){

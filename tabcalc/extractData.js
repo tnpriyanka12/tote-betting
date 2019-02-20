@@ -1,6 +1,6 @@
 
 
-//Extracts the Win , Place and Exacta arrays and
+// Extracts the Win , Place and Exacta arrays and
 // returns the pool object that contains each of these arrays
 
 module.exports = {

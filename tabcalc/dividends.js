@@ -1,4 +1,6 @@
 
+// Display dividends according to desired format
+
 
 const Tab = require('../tabcalc/tab.js');
 
@@ -7,15 +9,13 @@ module.exports = {
     let winString = '';
     let placeString = '';
     let exactaString = '';
-    let firstRank  = Tab.tabCalculator.raceResults.split(':')[1];
-    let secondRank = Tab.tabCalculator.raceResults.split(':')[2];
-    let thirdRank  = Tab.tabCalculator.raceResults.split(':')[3];
+    let ranks = Tab.tabCalculator.calcRanks();
 
-    winString   = `Win:${firstRank}:$${winYeild}\n`;
-    placeString =  `Place:${firstRank}:$${placeYeild['firstYeild']}\n`;
-    placeString += `Place:${secondRank}:$${placeYeild['secondYeild']}\n`;
-    placeString += `Place:${thirdRank}:$${placeYeild['thirdYeild']}\n`;
-    exactaString = `Exacta:${firstRank},${secondRank}:$${exactaYeild}\n`;
+    winString   = `Win:${ranks.first}:$${winYeild}\n`;
+    placeString =  `Place:${ranks.first}:$${placeYeild['firstYeild']}\n`;
+    placeString += `Place:${ranks.second}:$${placeYeild['secondYeild']}\n`;
+    placeString += `Place:${ranks.third}:$${placeYeild['thirdYeild']}\n`;
+    exactaString = `Exacta:${ranks.first},${ranks.second}:$${exactaYeild}\n`;
 
     return(winString+placeString+exactaString);
 

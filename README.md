@@ -37,16 +37,6 @@ Place:1:$2.13
 Exacta:2,3:$2.43
 ```
 
-# Folder Structure :
-`index.js`   -> Main file
-`/tabcalc`   -> includes all the files related to calculation logic of the betting app
-`/testinput` -> includes all the files that have sample inputs to the project
-`/tests    ` -> includes all the files to test the app
-
-# Tech stack:
-- NODEJS Framework
-- Mocha & Chai - Dev Frameworks for Testing
-
 
 # How to run
 
@@ -60,3 +50,22 @@ Then,
 
 
 `npm run test`      -> Will run all the unit tests available recursively
+
+
+# Folder Structure :
+`index.js`   -> Main file
+
+
+`/tabcalc`   -> includes all the files related to calculation logic of the betting app
+
+
+`/testinput` -> includes all the files that have sample inputs to the project
+
+
+`/tests    ` -> includes all the files to test the app
+
+
+
+# Tech stack:
+- NODEJS Framework
+- Mocha & Chai - Dev Frameworks for Testing

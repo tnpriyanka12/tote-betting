@@ -2,10 +2,12 @@
 
 
 'use strict';
+
 var Tab           = require('./tabcalc/tab.js');
 var ExtractData   = require('./tabcalc/extractData.js');
 var Pools         = require('./tabcalc/pools.js');
 var Dividends     = require('./tabcalc/dividends.js');
+
 
   //Prompt the user for input
   console.log('Please input your data as follows:\nBet:W:1:3 \nBet:W:2:4\n ..\n ..\nBet:E:3,2:51 \nResult:2:3:1 \n\n');

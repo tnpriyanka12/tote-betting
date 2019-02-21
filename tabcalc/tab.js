@@ -7,7 +7,6 @@
       place: 0.12,
       exacta: 0.18
     },
-    resultDividends: {},
     calcRanks: function(){
       let first  = this.raceResults.split(':')[1];
       let second = this.raceResults.split(':')[2];
@@ -17,7 +16,8 @@
         second,
         third
       })
-    }
+    },
+    result: ''
   }
 
   const inputPatterns = {

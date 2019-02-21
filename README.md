@@ -45,13 +45,14 @@ Exacta:2,3:$2.43
 
 
 # How to run
-As a first step, run `npm install`,
+
+As a first step, run `npm install`, after cloning the project,
 
 
 Then,
 
 
-`npm run start`     -> Will start the test and prompt the user for input
+`npm run start`     -> Will start the test and prompt the user for input(`index.js` is the main file)
 
 
 `npm run test`      -> Will run all the unit tests available recursively

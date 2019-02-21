@@ -10,7 +10,7 @@ var Dividends     = require('./tabcalc/dividends.js');
   //Prompt the user for input
   console.log('Please input your data as follows:\nBet:W:1:3 \nBet:W:2:4\n ..\n ..\nBet:E:3,2:51 \nResult:2:3:1 \n\n');
 
-  // Read the input by each line
+  // Read the input line by line
   const readline = require('readline');
   var rl = readline.createInterface({
     input: process.stdin,
@@ -20,7 +20,7 @@ var Dividends     = require('./tabcalc/dividends.js');
 
   //Reading input
   // - Check for the valid patterns, i.e BetType:<product>:<selections>:<stake>
-  // - Push to array only if input follows the valid pattern
+  // - Push to array only if input follows the valid pattern, read next input
   // - Check for the endline, i.e, Result:<first>:<second>:<third> and exit
   // - Store results only if input follows the valid pattern
 
@@ -37,13 +37,13 @@ var Dividends     = require('./tabcalc/dividends.js');
 
         //Step1
         var poolData = ExtractData.poolObj(Tab.tabCalculator.inputBetsArray);
-        console.log(poolData);
         //Step2
         var winYeild = Pools.calcWinYeild(poolData.WinArray, Tab.tabCalculator.commission.win);
         var placeYeild = Pools.calcPlaceYeild(poolData.PlaceArray, Tab.tabCalculator.commission.place);
         var exactaYeild = Pools.calcExactaYeild(poolData.ExactaArray, Tab.tabCalculator.commission.exacta);
         //Step3
         let dividends = Dividends.showDividends(winYeild, placeYeild, exactaYeild);
+        Tab.tabCalculator.result = dividends;
         //Print the final result
         process.stdout.write('\n\nFinal Outcome:\n');
         process.stdout.write(dividends);

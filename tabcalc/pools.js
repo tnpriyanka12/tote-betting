@@ -9,12 +9,12 @@ module.exports = {
   //The total win yeild is calculates as
   // ($ total wagered money ) x (1 – commission%) / amount wagered on selected runner
 
+  //Calculate the Win Yeild
   calcWinYeild: function (winInputArray, commission) {
     let poolAmount  = 0;
     let totalWinStake = 0;
     let yeild = 0;
     let ranks = Tab.tabCalculator.calcRanks();
-
     for(let i=0; i<winInputArray.length; i++){
       let currObj      = winInputArray[i].split(':');
       let winSelection = currObj[2];
@@ -32,7 +32,7 @@ module.exports = {
 
   },
 
-
+  //Calculate the Place Yeild
   calcPlaceYeild: function (placeInputArray, commission) {
     let poolAmount  = 0;
     let firstStake = 0, secondStake = 0, thirdStake = 0;
@@ -46,7 +46,7 @@ module.exports = {
       let placeSelection = currObj[2];
       let placeStake     = parseFloat(currObj[3]);
       poolAmount += placeStake;
-      //Calculate total winning stake for the winner
+      //Calculate total winning stake for the first, second and third place
       switch(placeSelection) {
         case (ranks.first):
           firstStake += placeStake;
@@ -79,7 +79,7 @@ module.exports = {
   },
 
 
-
+  //Calculate the Exacta Yeild
   calcExactaYeild: function (exactaInputArray, commission) {
     let poolAmount  = 0;
     let totalExactaStake = 0;
@@ -91,8 +91,9 @@ module.exports = {
       let exactaSelection = currObj[2];
       let exactaStake     = parseFloat(currObj[3]);
       let exactaRank      = ranks.first + ',' + ranks.second;
+
       poolAmount += exactaStake;
-      //Calculate total winning stake for the winner
+      //Calculate total winning stake for the winning order
       if(exactaSelection == exactaRank){
         totalExactaStake += exactaStake;
       }

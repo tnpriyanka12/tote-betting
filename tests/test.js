@@ -128,6 +128,7 @@ describe('pools', function(){
     });
   });
 
+  });
 
 
   describe('dividends', function(){
@@ -158,4 +159,31 @@ describe('pools', function(){
     });
   });
 
-});
+
+  describe('zeroData', function(){
+    let inputBetsArray = [];
+    let poolObj = {
+      WinArray: [],
+      PlaceArray: [],
+      ExactaArray: []
+    };
+    let commission = 0.12;
+    let expectedYeild = '0.00';
+    it('exists', function () {
+        expect(ExtractData.poolObj).to.be.a('function')
+    });
+
+    it('input is an Array of length 0', function () {
+      expect(inputBetsArray).to.be.an.instanceof(Array)
+      expect(inputBetsArray).to.have.lengthOf(0)
+    });
+
+    it('should return and object of empty arrays', () => {
+      expect(ExtractData.poolObj(inputBetsArray)).to.deep.equal(poolObj);
+    });
+
+    it('should return a value 0.00 with precision upto 2 points', () => {
+      expect(Pools.calcWinYeild(poolObj.WinArray, commission)).to.equal(expectedYeild);
+    });
+
+  });

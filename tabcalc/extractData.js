@@ -1,3 +1,4 @@
+'use strict'
 
 
 // Extracts the Win , Place and Exacta arrays and

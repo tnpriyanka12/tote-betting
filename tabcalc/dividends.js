@@ -1,3 +1,4 @@
+'use strict'
 
 // Display dividends according to desired format
 

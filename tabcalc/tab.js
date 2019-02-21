@@ -1,3 +1,6 @@
+'use strict'
+
+//This file contains variables or methods that are related to configuration & setup of the app
 
   const tabCalculator = {
     inputBetsArray: [],
@@ -18,10 +21,12 @@
       })
     },
     result: ''
-  }
+  };
 
+
+  //Patterns to check the Bet abd Result format while taking input line by line from stdin
   const inputPatterns = {
-    betFormat:  /^bet:[wpe]:\d+|\d+,\d+ :\d+$/i,
+    betFormat:  /^bet:[wpe]:\d+|\d+,\d+:\d+$/i,
     resultFormat: /^result:\d+:\d+:\d+$/i
   }
 

@@ -1,24 +1,15 @@
 'use strict'
 
-
 var defaultData   = require('../testinput/defaultData.js');
 var ExtractData   = require('../tabcalc/extractData.js');
 var Pools         = require('../tabcalc/pools.js');
 var Dividends     = require('../tabcalc/dividends.js');
 var Tab           = require('../tabcalc/tab.js');
 
-
-
-
 const expect = require('chai').expect
 const assert = require('assert');
 
-describe('DEFAULT TEST', function(){
-  it('should return true', () => {
-    assert.equal(true, true);
-  });
-})
-
+//Test the ExtractData module
 describe('extractData', function(){
   let inputBetsArray = defaultData.betsArraySmall;
   let poolObj = defaultData.poolObjSmall;
@@ -37,7 +28,7 @@ describe('extractData', function(){
   });
 });
 
-
+//Test the Pools module
 describe('pools', function(){
 
   describe('winPool', function(){
@@ -130,7 +121,7 @@ describe('pools', function(){
 
   });
 
-
+  //Test the Dividends module
   describe('dividends', function(){
     Tab.tabCalculator.raceResults = 'Result:2:3:1';
     let winYeild = '2.61';
@@ -160,6 +151,8 @@ describe('pools', function(){
   });
 
 
+//Test the App when empty data is givin as input
+//This is to prevent undefined outputs, or errors
   describe('zeroData', function(){
     let inputBetsArray = [];
     let poolObj = {
@@ -169,9 +162,11 @@ describe('pools', function(){
     };
     let commission = 0.12;
     let expectedYeild = '0.00';
-    it('exists', function () {
-        expect(ExtractData.poolObj).to.be.a('function')
-    });
+    let expectedPlaceYeild = {
+      firstYeild: '0.00',
+      secondYeild: '0.00',
+      thirdYeild: '0.00'
+    };
 
     it('input is an Array of length 0', function () {
       expect(inputBetsArray).to.be.an.instanceof(Array)
@@ -184,6 +179,8 @@ describe('pools', function(){
 
     it('should return a value 0.00 with precision upto 2 points', () => {
       expect(Pools.calcWinYeild(poolObj.WinArray, commission)).to.equal(expectedYeild);
+      expect(Pools.calcPlaceYeild(poolObj.PlaceArray, commission)).to.deep.equal(expectedPlaceYeild);
+      expect(Pools.calcWinYeild(poolObj.ExactaArray, commission)).to.equal(expectedYeild);
     });
 
   });

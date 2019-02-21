@@ -1,3 +1,5 @@
+'use strict'
+
 //The three pools are divided here
 //Individual pools' yeilds are calculated separately
 

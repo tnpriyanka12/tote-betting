@@ -24,15 +24,18 @@ Tabcorp takes an 18% commission from the Exacta pool
 The remaining total is split, proportionally to stake, amongst punters who chose the correct first and
 second horse in correct order
 
-Sample Input to be given in stdin: /testinput/defaultinput.txt
+###### Sample Input to be given in stdin:
+/testinput/defaultinput.txt
 
 
-Sample Output:
+###### Sample Output:
+```
 Win:2:$2.61
 Place:2:$1.06
 Place:3:$1.27
 Place:1:$2.13
 Exacta:2,3:$2.43
+```
 
 
 

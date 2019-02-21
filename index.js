@@ -30,19 +30,18 @@ var Dividends     = require('./tabcalc/dividends.js');
       var lineLowerCase = line.toLowerCase();
       if(Tab.inputPatterns.resultFormat.test(lineLowerCase)){
         Tab.tabCalculator.raceResults = line;
-
         //User input ends here. Start calculating divdends
-        //Step1 - Seperate win, place and extacta arrays into one object 'poolData'
-        //Step2 - Calculate the yeilds of all the pools
+        //Step1 - Seperate win, place and extacta arrays into one object 'pool'
+        //Step2 - Calculate the yeilds of each of the pools individually
         //Step3 - Generate the appropriate display for the yeilds and display the output to stdout
 
         //Step1
         var poolData = ExtractData.poolObj(Tab.tabCalculator.inputBetsArray);
         console.log(poolData);
         //Step2
-        var winYeild = Pools.calcWinYeild(poolData.WinArray,Tab.tabCalculator.commission.win);
-        var placeYeild = Pools.calcPlaceYeild(poolData.PlaceArray,Tab.tabCalculator.commission.place);
-        var exactaYeild = Pools.calcExactaYeild(poolData.ExactaArray,Tab.tabCalculator.commission.exacta);
+        var winYeild = Pools.calcWinYeild(poolData.WinArray, Tab.tabCalculator.commission.win);
+        var placeYeild = Pools.calcPlaceYeild(poolData.PlaceArray, Tab.tabCalculator.commission.place);
+        var exactaYeild = Pools.calcExactaYeild(poolData.ExactaArray, Tab.tabCalculator.commission.exacta);
         //Step3
         let dividends = Dividends.showDividends(winYeild, placeYeild, exactaYeild);
         //Print the final result

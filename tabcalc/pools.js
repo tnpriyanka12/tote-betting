@@ -15,7 +15,6 @@ module.exports = {
     let yeild = 0;
     let ranks = Tab.tabCalculator.calcRanks();
 
-
     for(let i=0; i<winInputArray.length; i++){
       let currObj      = winInputArray[i].split(':');
       let winSelection = currObj[2];
@@ -28,8 +27,9 @@ module.exports = {
       }
     }
 
-    yeild = (poolAmount * (1-commission)) / (totalWinStake);
+    yeild = (totalWinStake!== 0) ? (poolAmount * (1-commission)) / (totalWinStake): 0;
     return yeild.toFixed(2);
+
   },
 
 
@@ -63,9 +63,9 @@ module.exports = {
     }
     poolAmount = poolAmount/3;
 
-    firstYeild  = (poolAmount * (1-commission)) / (firstStake);
-    secondYeild = (poolAmount * (1-commission)) / (secondStake);
-    thirdYeild  = (poolAmount * (1-commission)) / (thirdStake);
+    firstYeild  = firstStake!== 0 ?  (poolAmount * (1-commission)) / (firstStake) : 0;
+    secondYeild = secondStake!== 0 ?  (poolAmount * (1-commission)) / (secondStake): 0;
+    thirdYeild  = thirdStake!== 0 ?  (poolAmount * (1-commission)) / (thirdStake) : 0;
 
     firstYeild = firstYeild.toFixed(2);
     secondYeild = secondYeild.toFixed(2);
@@ -98,7 +98,7 @@ module.exports = {
       }
     }
 
-    yeild = (poolAmount * (1-commission)) / (totalExactaStake);
+    yeild = totalExactaStake !== 0 ? (poolAmount * (1-commission)) / (totalExactaStake) : 0;
     return yeild.toFixed(2);
 
   }

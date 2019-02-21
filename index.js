@@ -8,7 +8,7 @@ var Pools         = require('./tabcalc/pools.js');
 var Dividends     = require('./tabcalc/dividends.js');
 
   //Prompt the user for input
-  console.log('Please input your data as follows:\nBet:W:1:3 \nBet:W:2:4\n ..\n ..\nBet:E,32:51 \nResult:2:3:1 \n\n');
+  console.log('Please input your data as follows:\nBet:W:1:3 \nBet:W:2:4\n ..\n ..\nBet:E:3,2:51 \nResult:2:3:1 \n\n');
 
   // Read the input by each line
   const readline = require('readline');
@@ -38,6 +38,7 @@ var Dividends     = require('./tabcalc/dividends.js');
 
         //Step1
         var poolData = ExtractData.poolObj(Tab.tabCalculator.inputBetsArray);
+        console.log(poolData);
         //Step2
         var winYeild = Pools.calcWinYeild(poolData.WinArray,Tab.tabCalculator.commission.win);
         var placeYeild = Pools.calcPlaceYeild(poolData.PlaceArray,Tab.tabCalculator.commission.place);

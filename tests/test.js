@@ -1,6 +1,9 @@
 'use strict'
 
+//All the inputs for testing come from Defaultdata
 var defaultData   = require('../testinput/defaultData.js');
+
+//Testing for the following modules, hence required
 var ExtractData   = require('../tabcalc/extractData.js');
 var Pools         = require('../tabcalc/pools.js');
 var Dividends     = require('../tabcalc/dividends.js');
@@ -8,6 +11,10 @@ var Tab           = require('../tabcalc/tab.js');
 
 const expect = require('chai').expect
 const assert = require('assert');
+
+//Commonly used throughout
+Tab.tabCalculator.raceResults = 'Result:2:3:1';
+
 
 //Test the ExtractData module
 describe('extractData', function(){
@@ -31,13 +38,12 @@ describe('extractData', function(){
 //Test the Pools module
 describe('pools', function(){
 
+  //WIN POOL
   describe('winPool', function(){
     let winInputArray = defaultData.winInputArray;
     let commission    = Tab.tabCalculator.commission.win;
     let expectedYeild = '2.61';
-    Tab.tabCalculator.raceResults = 'Result:2:3:1';
 
-    //WIN POOL
     it('exists', function () {
         expect(Pools.calcWinYeild).to.be.a('function')
     });
@@ -58,7 +64,7 @@ describe('pools', function(){
     });
   });
 
-
+  //PLACE POOL
   describe('placePool', function(){
     let placeInputArray = defaultData.placeInputArray;
     let commission    = Tab.tabCalculator.commission.place;
@@ -67,10 +73,7 @@ describe('pools', function(){
       secondYeild: '1.27',
       thirdYeild: '2.13'
     }
-    Tab.tabCalculator.raceResults = 'Result:2:3:1';
 
-
-    //PLACE POOL
     it('exists', function () {
         expect(Pools.calcPlaceYeild).to.be.a('function')
     });
@@ -92,13 +95,13 @@ describe('pools', function(){
     });
   });
 
+
+  //EXACTA POOL
   describe('exactaPool', function(){
 
     let exactaInputArray = defaultData.exactaInputArray;
     let commission    = Tab.tabCalculator.commission.exacta;
     let expectedYeild = '2.43';
-    Tab.tabCalculator.raceResults = 'Result:2:3:1';
-    //EXACTA POOL
     it('exists', function () {
         expect(Pools.calcWinYeild).to.be.a('function')
     });
@@ -123,7 +126,6 @@ describe('pools', function(){
 
   //Test the Dividends module
   describe('dividends', function(){
-    Tab.tabCalculator.raceResults = 'Result:2:3:1';
     let winYeild = '2.61';
     let placeYeild = {
       firstYeild: '1.06',
